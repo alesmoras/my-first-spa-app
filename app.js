@@ -41,9 +41,10 @@
         function checkArrayForEmptyString(string)
         {
             var array = string.split(',');
-            for(var i = 0 ; i < string.length ; i++)
+
+            for(var i = 0 ; i < array.length ; i++)
             {
-                if(string[i] === "" || string[i] == ""|| string[i] == " " || string[i] === " ")
+                if(array[i] === "" || array[i] == ""|| array[i] == " " || array[i] === " ")
                 {
                     return true;
                 }
