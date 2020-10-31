@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My SPA</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Palindrome Checker</title>
 </head>
-<body>
-    <h1>Hello World</h1>
+<body ng-app="PalindromeChecker">
+    <h1 style="text-align: center;">Palindrome Checker</h1>
+    <div ng-controller="PalindromeCheckerController">
+        <div style="margin:auto;width:50%">
+            <span>
+                <label for="txtInput">Your input:</label>
+                <input id="txtInput" class="" type="text" ng-model="input">
+                <input id="btnSubmit" type="button" value="Submit" ng-click="evaluate()">
+            </span>            
+        </div>
+    </div>
 </body>
 </html>
