@@ -40,9 +40,7 @@
 
         function checkArrayForEmptyString(string)
         {
-            string.replace("",null);
             var array = string.split(',');
-            console.log(array);
             for(var i = 0 ; i < string.length ; i++)
             {
                 if(string[i] === "" || string[i] == ""|| string[i] == " " || string[i] === " ")
