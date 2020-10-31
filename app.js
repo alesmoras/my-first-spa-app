@@ -1,36 +1,67 @@
 (function () {
     'use strict';
 
-    angular.module('PalindromeChecker', [])
+    angular.module('LunchCheck', [])
 
-        .controller('PalindromeCheckerController', ['$scope', PalindromeCheckerController]);
+        .controller('LunchCheckController', ['$scope', LunchCheckController]);
 
-    function PalindromeCheckerController($scope)
+    function LunchCheckController($scope)
     {
-        $scope.input = "";
-        $scope.isPalindrome = "Test"
+        $scope.lunchmenu = "";
+        $scope.IsTooMuch = ""
 
         $scope.evaluate = function () {
-            if ($scope.input.length <= 1) {
-                return alert("Word should be more than 1 character");
+            if ($scope.lunchmenu == "")
+            {
+                $scope.IsTooMuch = "Please enter data first";
+                return;
             }
-            var reverse = reverseString($scope.input)
-            evaluateString($scope.input, reverse);
+            else if (checkArrayForEmptyString($scope.lunchmenu))
+            {
+                $scope.IsTooMuch = "Missing data. please complete the details";
+                return; 
+            }
+            else if (IsAValidInput($scope.lunchmenu))
+            {
+                $scope.IsTooMuch = "Missing data. please complete the details";
+                return; 
+            }
+            evaluate($scope.lunchmenu)
         }
-    }
 
-    function evaluateString(string, reverseString) {
-        if (string.toLowerCase() != reverseString) {
-            alert("It's not a palindrome");
+        function evaluate(string)
+        {
+           var array = string.split(',');
+           console.log(array);
+           if (array.length <= 3 )
+           {
+               $scope.IsTooMuch = "Enjoy!";
+           }
+           else if(array.length > 3)
+           {
+               $scope.IsTooMuch = "Too much!";
+           }
         }
-        else {
-            alert("It's a palindrome");
-        }
-    }
 
-    function reverseString(string) {
-        var result = string.toLowerCase().split('').reverse().join('');
-        return result;
+        function checkArrayForEmptyString(string)
+        {
+            string.replace("",null);
+            var array = string.split(',');
+            console.log(array);
+            for(var i = 0 ; i < string.length ; i++)
+            {
+                if(string[i] === "" || string[i] == ""|| string[i] == " " || string[i] === " " || IsAValidInput(string[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function IsAValidInput(str)
+        {
+            return /^[0-9,.]*$/.test(str);
+        }
     }
 
 })();
